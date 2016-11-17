@@ -1,2 +1,3 @@
 # code-for-blog
-Code samples from my [blog](https://poanchen.github.io/blog/).
+
+This repository collects code samples linked from my [blog](https://poanchen.github.io/blog/).
