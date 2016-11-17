@@ -1,0 +1,29 @@
+<input type="text" id="username" name="username" placeholder="username">
+<p id="usernameResult"></p>
+
+<script type="text/javascript">
+  var usernameSelected = document.getElementById('username');
+  var usernameWarning = document.getElementById('usernameResult');
+
+  usernameSelected.addEventListener('keyup', function() {
+    var request = new XMLHttpRequest();
+    var url = "https://www.jenrenalcare.com/upload/poanchen.github.io/sample-code/2016/10/16/how-to-create-simple-rest-api-in-php-and-call-them-in-js/checkIfUsernameExist.php";
+    var params = "username=" + usernameSelected.value;
+
+    request.open('POST', url, true);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function() {
+      if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) {
+          var response = JSON.parse(request.response);
+          if (response.result) {
+            usernameWarning.innerHTML = "The username you typed has been used!";
+          }else{
+            usernameWarning.innerHTML = "You may freely use this username!";
+          }
+        }
+      }
+    };
+    request.send(params);
+  });
+</script>

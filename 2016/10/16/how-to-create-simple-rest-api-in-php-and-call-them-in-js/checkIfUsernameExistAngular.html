@@ -1,0 +1,30 @@
+<div ng-app="usernameApp" ng-controller="usernameController">
+  <input type="text" ng-model="username" ng-keyup="usernameKeyup()" placeholder="username">
+  <p>{{ return_message }}</p>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+  var usernameApp = angular.module('usernameApp', []);
+  
+  usernameApp.controller('usernameController', function ($scope, $http) {
+    $scope.usernameKeyup = function() {
+      $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+      var url = "https://www.jenrenalcare.com/upload/poanchen.github.io/sample-code/2016/10/16/how-to-create-simple-rest-api-in-php-and-call-them-in-js/checkIfUsernameExist.php";
+      var formData = "username=" + $scope.username;
+
+      $http.post(url, formData)
+      .success(function (response, status, headers, config) {
+        if (response.result) {
+          $scope.return_message = "The username you typed has been used!";
+        }else{
+          $scope.return_message = "You may freely use this username!";
+        }
+      })
+      .error(function (data, status, header, config) {
+        $scope.return_message = "Something went wrong!";
+      });
+    };
+  });
+</script>

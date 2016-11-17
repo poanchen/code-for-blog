@@ -1,0 +1,86 @@
+<input type="text" id="username" name="username" placeholder="username">
+<p id="usernameResult"></p>
+<input type="text" id="email" name="email" placeholder="email">
+<p id="emailResult"></p>
+<input type="password" id="password" name="password" placeholder="password">
+<p id="passwordResult"></p>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    // username
+    var usernameSelected = $('#username');
+    var usernameWarning = $('#usernameResult');
+    // email
+    var emailSelected = $('#email');
+    var emailWarning = $('#emailResult');
+    // password
+    var passwordSelected = $('#password');
+    var passwordWarning = $('#passwordResult');
+
+    usernameSelected.keyup(function() {
+      createAnAccountForUserInWordPress();
+    });
+
+    emailSelected.keyup(function() {
+      createAnAccountForUserInWordPress();
+    });
+
+    passwordSelected.keyup(function() {
+      createAnAccountForUserInWordPress();
+    });
+
+    function createAnAccountForUserInWordPress () {
+      var url = "https://www.jenrenalcare.com/upload/poanchen.github.io/sample-code/2016/10/22/how-to-programmatically-register-an-account-in-wordpress/tryRegisterAnAccount.php";
+      var formData = {
+        'username' : usernameSelected.val(),
+        'email' : emailSelected.val(),
+        'password' : passwordSelected.val()
+      };
+
+      $.ajax({
+        type : 'POST',
+        url : url,
+        data : formData,
+        dataType : 'JSON',
+        encode : true,
+        success: function (response, status, xhr) {
+          clearErrorMessages();
+          if (!response.result) {
+            outpurErrorMessages(response.errors);
+          }
+        },
+        error: function (xhr, status, error) {
+          usernameWarning.html("Something went wrong!");
+        }
+      });
+    }
+
+    function outpurErrorMessages (errorCodes) {
+      errorCodes.forEach(function (element, index, array) {
+        switch(element) {
+          case 1:
+            usernameWarning.html("The username you typed has been used!");
+            break;
+          case 2:
+            emailWarning.html("The email address you typed has been used!");
+            break;
+          case 3:
+            emailWarning.html("The email address you typed is not valid!");
+            break;
+          case 4:
+            passwordWarning.html("Please input a password that is at least length of 5!");
+            break;
+          default:
+            console.log("test");
+        }
+      });
+    }
+
+    function clearErrorMessages () {
+      usernameWarning.html("");
+      emailWarning.html("");
+      passwordWarning.html("");
+    }
+ });
+</script>
