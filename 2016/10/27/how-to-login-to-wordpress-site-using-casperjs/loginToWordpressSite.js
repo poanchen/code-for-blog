@@ -17,3 +17,5 @@ casper.waitForUrl(urlAfterLoggedIn, function() {
   this.viewport(3000, 1080);
   this.capture('./screenshot.png', {top: 0,left: 0,width: 3000, height: 1080});
 });
+
+casper.run();
