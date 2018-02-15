@@ -1,0 +1,2 @@
+./gradlew :projectName-api:unitTest --tests io.github.poanchen.projectName.api.BlogControllerTests.testCreate_BlogWithoutTitle
+./gradlew :projectName-api:unitTest --tests io.github.poanchen.projectName.api.BlogControllerTests

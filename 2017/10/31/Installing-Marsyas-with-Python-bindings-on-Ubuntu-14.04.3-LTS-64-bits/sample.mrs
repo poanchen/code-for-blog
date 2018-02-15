@@ -1,0 +1,10 @@
+Series {
+  inSamples = 2048
+  -> input: SoundFileSource { filename = "sample.wav" }
+  -> Windowing { size = 2048 }
+  -> Spectrum
+  -> PowerSpectrum { spectrumType = "magnitude" }
+  -> selection: Selector { disable = 0 }
+  -> sink: CsvSink { filename = "output.csv" }
+  + done = (input/hasData == false)
+}

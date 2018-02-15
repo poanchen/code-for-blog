@@ -1,0 +1,1 @@
+ffmpeg -i sample.mp4 -profile:v baseline -level 3.0 -s 840x560 -start_number 0 -hls_list_size 0 -f hls sample.m3u8
