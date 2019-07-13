@@ -1,0 +1,1 @@
+cd letsencrypt/; ./letsencrypt-auto renew
