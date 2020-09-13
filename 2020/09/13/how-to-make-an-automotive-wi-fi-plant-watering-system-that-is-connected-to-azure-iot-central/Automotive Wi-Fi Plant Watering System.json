@@ -1,0 +1,48 @@
+{
+  "@id": "urn:IoTProject:AutomotiveWiFiPlantWateringSystemV4_51y:1",
+  "@type": "CapabilityModel",
+  "implements": [
+    {
+      "@id": "urn:IoTProject:AutomotiveWiFiPlantWateringSystemV4_51y:u09vydk92:1",
+      "@type": "InterfaceInstance",
+      "displayName": {
+        "en": "Interface"
+      },
+      "name": "AutomotiveWiFiPlantWateringSystemV4_3dv",
+      "schema": {
+        "@id": "urn:IoTProject:AutomotiveWiFiPlantWateringSystemV4_3dv:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "Interface"
+        },
+        "contents": [
+          {
+            "@id": "urn:IoTProject:AutomotiveWiFiPlantWateringSystemV4_3dv:MoisturePercentage:1",
+            "@type": "Telemetry",
+            "displayName": {
+              "en": "Moisture Percentage"
+            },
+            "name": "MoisturePercentage",
+            "schema": "integer",
+            "unit": "percent"
+          },
+          {
+            "@id": "urn:IoTProject:AutomotiveWiFiPlantWateringSystemV4_3dv:PlantJustWatered:1",
+            "@type": "Telemetry",
+            "displayName": {
+              "en": "Plant Just Watered"
+            },
+            "name": "PlantJustWatered",
+            "schema": "integer"
+          }
+        ]
+      }
+    }
+  ],
+  "displayName": {
+    "en": "Automotive Wi-Fi Plant Watering System"
+  },
+  "@context": [
+    "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
+}
