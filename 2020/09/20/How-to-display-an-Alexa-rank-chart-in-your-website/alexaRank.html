@@ -1,0 +1,40 @@
+<h2>Alexa rank</h2>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<canvas id="myChart"></canvas>
+<script>
+var request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+	if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+		var labels = [], data = [], json = JSON.parse(request.response);
+		for(var i = 0; i < json.length; i++) {
+			labels.push(json[i]['Date and Time']);
+			data.push(json[i]['Global Rank']);
+		}
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: 'Global Rank for poanchen.github.io',
+					data: data,
+					fill: false
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							reverse: true
+						}
+					}]
+				}
+			}
+		});
+	}
+};
+request.open('GET', 'https://poanchengithubio.blob.core.windows.net/poanchen/poanchen - alexa.json?sp=rl&st=2020-09-12T11:44:01Z&se=2030-09-13T11:44:00Z&sv=2019-12-12&sr=b&sig=m8jGz72tUxYfyyflfTVdr7CVdTcyN4aMPIM6uEi4hRE%3D', true);
+request.send(null);
+</script>
