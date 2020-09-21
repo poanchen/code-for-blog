@@ -22,6 +22,7 @@ public class FibonacciNumber {
     return hm.get(n);
   }
   public int getFibonacciNumberBottomUpWithoutCache(int n) {
+    if (n == 0 || n == 1) return n;
     int fnMin2 = 0;
     int fnMin1 = 1;
     int sum = 0;
