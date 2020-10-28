@@ -1,0 +1,9 @@
+Hey poanchen,
+
+I found an issue where [Enter feedback here].
+
+---
+
+Blog title: How to prepopulate GitHub issue to make people's life easier in Jekyll?
+Site URL: https://poanchen.github.io/blog/2020/10/27/How-to-prepopulate-GitHub-issue-to-make-people-life-easier-in-jekyll
+Blog Date: 2020-10-27 01:30:30 -0700

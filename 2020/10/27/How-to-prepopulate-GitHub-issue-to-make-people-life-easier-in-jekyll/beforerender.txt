@@ -1,0 +1,9 @@
+Hey {{ page.author }},
+
+I found an issue where [Enter feedback here].
+
+---
+
+Blog title: {{ page.title }}
+Site URL: {{ site.url }}{{ page.url }}
+Blog Date: {{ page.date }}
